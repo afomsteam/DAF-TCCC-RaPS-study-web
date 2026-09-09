@@ -1,0 +1,4 @@
+participant_label,rank,participant_id,study_arm,clinical_years_experience,afsc,current_work_section
+Nurse-001,Capt,FR-001,control,6.5,46N3,ICU
+Nurse-002,1st Lt,FR-002,frequency,3,46N3,Emergency Department
+Nurse-003,Capt,FR-003,deliberate,9,46N3,Medical-Surgical Unit

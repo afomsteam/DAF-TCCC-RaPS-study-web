@@ -1,0 +1,10 @@
+{
+  "name": "fieldready-competency-study-web",
+  "version": "0.1.2",
+  "private": true,
+  "description": "Static GitHub Pages/PWA edition of FieldReady Competency Study",
+  "scripts": {
+    "verify": "node scripts/verify-study-config.js",
+    "check:web": "node scripts/verify-web-package.js"
+  }
+}
