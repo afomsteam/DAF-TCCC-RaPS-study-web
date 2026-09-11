@@ -1,63 +1,39 @@
-# FieldReady Competency Study — Web/PWA v0.1.2
+# FieldReady Nurse Competency Study — GitHub-Ready Static App
 
-This repository is the browser/PWA companion to the Android FieldReady Competency Study baseline. It is a **static web application** designed to be hosted directly from GitHub Pages. No server, database, Node runtime, or build step is required for the deployed site.
+This repository is a research-focused rewrite of the generic TCCC training/evaluation web app. It is designed to make the final-stage TSNRP/IRB revisions tangible before activation.
 
-## Clinical content baseline
+## What changed
 
-This web version uses the same protected `tiers.js` assessment data as the v0.1.2 Android-source package, including the restored CMC Tactical Trauma Assessment with CUF, TFC, MARCH-PAWS, communication, documentation, and evacuation content, plus the selected TQ, NPA, NDC, and blood skill assessments.
+- Dedicated **research encounter workflow** instead of generic class/training management.
+- Required metadata: Participant ID, timepoint, study arm, clinical years, AFSC, work section, deployment count, prior TCCC exposure, evaluator ID, scenario version, assessment instance ID, app build, schema version, and checklist version.
+- Protocol-aligned 5 failure modes and 5 evaluator-attributed primary contributors.
+- Every failed criterion must have one failure mode and one contributor before finalization.
+- `Other / unclear` requires an objective comment.
+- Critical criteria cannot be marked NT.
+- NT is only for noncritical criteria not elicited by the approved scenario.
+- Required timers must be completed before finalization.
+- Finalized encounters are locked and exportable.
+- Calibration log is separated from participant records.
+- Browser/local storage warning is explicit; browser storage is not the research database.
 
-Do not casually edit `tiers.js`. `npm run verify` protects the study configuration and should be run after clinical-content changes.
+## Important activation note
 
-## What is different from Android
+`checklist-cmc.js` is modular on purpose. Before real participant use, the PI must verify or replace the source-map content with the fully approved CMC checklist and targeted skill pages, lock the source version, and recalibrate evaluators. A successful web build is not clinical source approval.
 
-- Runs in Chrome, Edge, Safari, Firefox, and other modern browsers.
-- Can be installed as a Progressive Web App (PWA) on supported devices.
-- Caches the application shell for offline use after the first successful load.
-- Exports PDF/CSV/JSON through normal browser downloads.
-- Stores working records in **browser-local storage**. There is no central synchronization in this version.
-- Each browser/device therefore has an independent local dataset.
+## Deploy on GitHub Pages
 
-## Publish with GitHub Pages — recommended method
+1. Create a new GitHub repository.
+2. Upload all files from this folder to the repository root.
+3. Go to **Settings → Pages**.
+4. Set source to **GitHub Actions**.
+5. Push to `main` or run the workflow manually.
 
-1. Create a new GitHub repository, for example `FieldReady-Competency-Web`.
-2. Upload **all files and folders in this ZIP to the repository root**.
-3. Commit them to the `main` branch.
-4. In GitHub open **Settings → Pages**.
-5. Under **Build and deployment**, select **Deploy from a branch**.
-6. Choose branch **main** and folder **/(root)**, then Save.
-7. GitHub will provide the Pages address after deployment completes.
-
-This branch-based method intentionally does **not** use `actions/configure-pages`, so the site does not depend on the Pages Actions configuration that can fail when Pages has not been enabled first.
-
-## GitHub Actions
-
-The included `.github/workflows/validate.yml` workflow only validates the protected assessment configuration and web package. It does not deploy the site. Deployment is handled by GitHub Pages directly from `main/(root)`.
-
-## Local testing
-
-Do not double-click `index.html` for final PWA testing because service workers require HTTP(S). From the repository directory you can use any local static server, for example:
+## Local validation
 
 ```bash
-python3 -m http.server 8080
+node tests/validation.js
 ```
 
-Then open `http://localhost:8080`.
+## Data exports
 
-## Data handling
-
-This release is local-only. Do not enter CUI, PHI, classified information, patient identifiers, SSNs, DoD ID numbers, or other protected information unless the application and hosting environment are specifically approved for that data. Export and back up completed study data according to the approved study/organizational process.
-
-## Files to know
-
-- `index.html` — application UI
-- `app.js` — evaluator workflow, records, exports, analytics
-- `tiers.js` — protected assessment content
-- `installations.js` — MAJCOM/installation selector data
-- `styles.css` — visual design
-- `branding.js` — ownership/branding text
-- `web-platform.js` — PWA install + connectivity behavior
-- `sw.js` — offline cache/service worker
-- `manifest.webmanifest` — installable web-app metadata
-- `assets/` — app icons and AE/CCATT visuals
-- `scripts/verify-study-config.js` — clinical/study-content validation
-- `scripts/verify-web-package.js` — static web package validation
+The app exports JSON, criterion-level CSV, timer CSV, calibration log JSON, and a data dictionary CSV. Export finalized records promptly into the approved study data environment.
