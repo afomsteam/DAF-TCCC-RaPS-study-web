@@ -1,10 +1,19 @@
 {
-  "name": "fieldready-competency-study-web",
-  "version": "0.1.2",
+  "name": "fieldready-competency-study",
+  "version": "3.0.0-research",
   "private": true,
-  "description": "Static GitHub Pages/PWA edition of FieldReady Competency Study",
+  "description": "Research-locked derivative of DAF TCCC RaPS for the longitudinal Air Force nurse TCCC competency study.",
   "scripts": {
-    "verify": "node scripts/verify-study-config.js",
-    "check:web": "node scripts/verify-web-package.js"
+    "prepare:study": "node scripts/sync-upstream.mjs",
+    "verify": "node scripts/verify.mjs",
+    "test": "node scripts/test-patcher.mjs",
+    "build": "npm run prepare:study && npm run verify"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/filesystem": "^7.1.4",
+    "@capacitor/app": "^7.1.0"
   }
 }

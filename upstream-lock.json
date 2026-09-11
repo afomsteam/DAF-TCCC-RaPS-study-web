@@ -1,0 +1,21 @@
+{
+  "repository": "afomsteam/DAF-TCCC-RaPS-WEB",
+  "branch": "main",
+  "archiveUrl": "https://github.com/afomsteam/DAF-TCCC-RaPS-WEB/archive/refs/heads/main.zip",
+  "requiredSha256": {
+    "app.js": "3475cbb5d202b9706858992befdcd1adf31448a62fcd149e3cdba19a5acce1ba",
+    "branding.js": "404d2412c93b3d2b8fa2ca5b3c6f692247f13ce28140cbe294370ebc6a248f12",
+    "index.html": "d6eb46bcda92e5587ae9dbda3d54e83bfd853055a4048739622c0e6ac0c1296f",
+    "installations.js": "64c1bbb082d7f73714c1b8cb70a761f95820e98f911f609bff84d20b33869fd6",
+    "manifest.webmanifest": "c48883c86b424850eb20c8604fccb1238839e24313317ac5c95bd352cf64d7fc",
+    "styles.css": "4aab418b6d77cb9ec53d46e32fb9373b396a1c3480f4b8791442e6f4d64c3f4b",
+    "sw.js": "4493f8c6ff12d5879daa40ead59be202bed5fb23ef6a080e3af5c2a0599f7b37",
+    "tiers.js": "911f3b803b067f8a8de51087374902efd1418c141fdda6aada300ad143328102",
+    "version.js": "08568e04ade14ba2f90e318b8f9533667a1cb0804830e0b56875cdae50eddf02",
+    "assets/app-icon.png": "c9936d445899077115d1f796af8a7d0a7a2a13c9848f6cc761e8d27a3e327c60",
+    "assets/icon-192.png": "339a3d4b1aeee4ff1098c7d9705cad0a97ae0798b95dee9d65bff9262bdabe33",
+    "assets/icon-512.png": "ffe372cc15090d72efa5c0a8c35ace792906d2f739a5e32d76ecefe4e8c671e2",
+    "assets/splash-background.png": "1bd2e9f8155fee7ad900ac300a15f4068fad7f9ba9d75fffcc37a09c29f1231f"
+  },
+  "policy": "Fail closed if any locked upstream file changes. Review differences and intentionally update this lock before rebuilding."
+}

@@ -1,0 +1,6 @@
+{
+  "appId": "org.tccc.fieldready.study",
+  "appName": "FieldReady Competency Study",
+  "webDir": "www",
+  "server": {"androidScheme": "https"}
+}

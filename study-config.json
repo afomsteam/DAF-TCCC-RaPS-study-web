@@ -1,0 +1,33 @@
+{
+  "appName": "FieldReady Competency Study",
+  "appVersion": "3.0.0-research",
+  "dbKey": "FIELDREADY_STUDY_DB_V6",
+  "assessmentModules": ["CMC", "TQ", "NPA", "NDC", "BLOOD"],
+  "timepoints": [
+    ["baseline", "Baseline"],
+    ["3mo-pre", "3-month cold / pre-intervention"],
+    ["3mo-post", "3-month post-intervention"],
+    ["6mo-pre", "6-month cold / pre-intervention"],
+    ["6mo-post", "6-month post-intervention"]
+  ],
+  "studyArms": [
+    ["control", "Control / standard CMRP"],
+    ["frequency", "Frequency-Based Reinforcement"],
+    ["deliberate", "Deliberate Practice"]
+  ],
+  "failureModes": [
+    ["not-performed-incomplete", "Not performed / incomplete"],
+    ["incorrect-technique", "Incorrect technique"],
+    ["timing-sequence", "Timing / sequence"],
+    ["unsafe-action", "Unsafe action"],
+    ["other-unclear", "Other / unclear"]
+  ],
+  "failureContributors": [
+    ["knowledge-cue", "Knowledge / cue recognition"],
+    ["judgment-prioritization", "Judgment / prioritization"],
+    ["psychomotor-execution", "Psychomotor execution"],
+    ["communication-teamwork", "Communication / teamwork"],
+    ["system-context", "System / performance context"]
+  ],
+  "ntReason": ["scenario-not-elicited", "Approved scenario did not elicit this noncritical criterion"]
+}
