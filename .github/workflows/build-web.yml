@@ -1,0 +1,29 @@
+name: Build FieldReady Web App
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**/*.md'
+
+permissions:
+  contents: read
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - run: npm install --no-audit --no-fund
+      - run: npm test
+      - run: npm run prepare:study
+      - run: npm run verify
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FieldReady-Web-App
+          path: www/
+          if-no-files-found: error

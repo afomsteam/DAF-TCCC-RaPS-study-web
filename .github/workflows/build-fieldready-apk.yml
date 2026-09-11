@@ -1,0 +1,71 @@
+name: Build FieldReady Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**/*.md'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout study repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node 24
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Static repository tests
+        run: npm test
+
+      - name: Generate source-locked study app
+        run: npm run prepare:study
+
+      - name: Verify research instrument
+        run: npm run verify
+
+      - name: Add Android wrapper
+        run: npx cap add android
+
+      - name: Sync web source into Android
+        run: npx cap sync android
+
+      - name: Build debug APK
+        working-directory: android
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Rename APK
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk FieldReady-Competency-Study-v3.0.0-research.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: FieldReady-Competency-Study-APK
+          path: FieldReady-Competency-Study-v3.0.0-research.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload verified web source
+        uses: actions/upload-artifact@v4
+        with:
+          name: FieldReady-Verified-Web-Source
+          path: www/
+          if-no-files-found: error
+          retention-days: 30
